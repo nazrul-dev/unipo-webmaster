@@ -36,7 +36,7 @@ class Base extends Component
 
     public function confirmed()
     {
-       
+
         $row = $this->globalModel::find($this->globalIds);
         try {
             $row->delete();
@@ -49,7 +49,6 @@ class Base extends Component
         }
 
         $this->resetGlobal();
-       
     }
 
     public function cancelled()
@@ -58,17 +57,18 @@ class Base extends Component
         $this->resetGlobal();
     }
 
-    public function resetGlobal(){
+    public function resetGlobal()
+    {
         $this->globalModel = '';
-        $this->globalIds = ''; 
+        $this->globalIds = '';
     }
 
     public function triggerDestroy($ids, $model)
     {
-       
+
         $row = $model::find($ids);
-      
-        if($row){
+
+        if ($row) {
             $this->globalModel = $model;
             $this->globalIds = $row->id;
             $this->confirm('Penghapusan Data', [
@@ -79,15 +79,15 @@ class Base extends Component
                 'onConfirmed' => 'confirmed',
                 'onCancelled' => 'cancelled',
             ]);
-        }else{
+        } else {
             $this->notif('error', 'Tampaknya Data Tidak Ditemukan');
         }
-       
     }
 
-    public function checkRow($ids, $model){
+    public function checkRow($ids, $model)
+    {
         $row = $model::find($ids);
-        if($row){
+        if ($row) {
             return $row;
         }
 

@@ -22,13 +22,13 @@
     </nav>
     @if ($Mode == 'Data')
         <div>
-            <div class="flex items-center justify-between">
+            <div class="flex md:flex-row flex-col items-center justify-between  mb-5">
                 <h1 class="my-5 font-semibold">Data Fakultas </h1>
                 <div class="flex items-center space-x-3">
 
                     <button type="button" @click="ModeChange('Add')"
-                        class="flex items-center px-2 py-1 text-sm text-gray-200 bg-green-500 rounded hover:text-gray-100 hover:bg-green-700 focus:outline-none">
-                        <x-tabler icon="square-plus" class="text-gray-50 h-6" strokeWidth="1" /> <span>Tambah Fakultas
+                        class="flex items-center px-2 py-1 md:text-sm text-xs text-gray-200 bg-green-500 rounded hover:text-gray-100 hover:bg-green-700 focus:outline-none">
+                        <x-tabler icon="square-plus" class="text-gray-50 h-6" strokeWidth="1" /> <span>Fakultas
                         </span>
                     </button>
                     <div class="flex items-center justify-center ">
@@ -45,49 +45,60 @@
                     </div>
                 </div>
             </div>
-         
-            @if (!$DataAll->count())
-                <div
-                    class="min-h-screen border-2 rounded-lg bg-gray-100 border-dashed border-gray-300 flex items-center justify-center">
-                    <div class="-mt-10">
-                        <div class="text-center">
-                            <h1 class="text-xl font-bold tracking-widert">TIDAK ADA DATA FAKULTAS</h1>
-                            <span>Klik icon Tambah Jika Ingin <br>Menambah Fakultas</span>
-                        </div>
-                        <div class="flex justify-center">
-                            <button type="button" class="focus:outline-none" @click="ModeChange('Add')">
-                                <x-tabler icon="square-plus" class="text-green-500 h-44 hover:text-green-700 "
-                                    strokeWidth="1" />
-                            </button>
 
+            @if (!$DataAll->count())
+                @if (!$search)
+                    <div
+                        class="min-h-screen border-2 rounded-lg bg-gray-100 border-dashed border-gray-300 flex items-center justify-center">
+                        <div class="-mt-10">
+                            <div class="text-center">
+                                <h1 class="text-xl font-bold tracking-widert">TIDAK ADA DATA FAKULTAS</h1>
+                                <span>Klik icon Tambah Jika Ingin <br>Menambah Fakultas</span>
+                            </div>
+                            <div class="flex justify-center">
+                                <button type="button" class="focus:outline-none" @click="ModeChange('Add')">
+                                    <x-tabler icon="square-plus" class="text-green-500 h-44 hover:text-green-700 "
+                                        strokeWidth="1" />
+                                </button>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="text-center break-all animate-pulse">
+                        <span>Pencarian <br>"{{ $search }}"</span>
+                        <h1 class="text-base md:text-xl font-bold tracking-widert">TIDAK DITEMUKAN</h1>
+                    </div>
+                @endif
             @else
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-3 grid-cols-2 md:gap-4 gap-2">
                     @foreach ($DataAll as $data)
-                        <div class="bg-gray-50 border border-gray-200 rounded p-5">
-                            <img src="{{ $data->logo }}" alt="">
-                            <div class="text-center border-b-dashed">
-                                <h1 class="text-xl font-bold tracking-wider">{{ $data->alias }}</h1>
-                                <p class="font-semibold">{{ $data->name }}</p>
-                                <div>
-                                    <p>{{ $data->created_at->diffForHumans() }}</p>
-                                    <div class="flex justify-center px-2 pt-5 space-x-2 border-gray-700">
-                                        <button type="button" wire:click.prevent="destroy('{{ $data->id }}')"
-                                            class="flex items-center px-2 py-1 text-sm text-gray-200 bg-red-500 rounded hover:text-gray-100 hover:bg-red-700 focus:outline-none">
-                                            <x-tabler icon="trash" class="text-gray-50 h-6" strokeWidth="1" />
-                                        </button>
-                                        <button type="button" wire:click.prevent="edit('{{ $data->id }}')"
-                                            class="flex items-center px-2 py-1 text-sm text-gray-200 bg-green-500 rounded hover:text-gray-100 hover:bg-green-700 focus:outline-none">
-                                            <x-tabler icon="edit-circle" class="text-gray-50 h-6" strokeWidth="1" />
-                                        </button>
-                                    </div>
-                                </div>
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg">
+                            <img class="md:h-32 h-16 w-full object-cover border-b-2" src="{{ $data->pathlogo }}" alt="">
+                            <div class="flex justify-center items-end px-2 pt-3  space-x-2 border-gray-700">
+                                <button type="button" wire:click.prevent="destroy('{{ $data->id }}')"
+                                    class="flex items-center px-2 py-1 bg-red-500 rounded hover:text-gray-100 hover:bg-red-700 focus:outline-none">
+                                    <x-tabler icon="trash" class="text-gray-50  h-4 md:h-6" strokeWidth="1" />
+                                </button>
+                                <button type="button" wire:click.prevent="edit('{{ $data->id }}')"
+                                    class="flex items-center px-2 py-1 bg-green-500 rounded hover:text-gray-100 hover:bg-green-700 focus:outline-none">
+                                    <x-tabler icon="edit-circle" class="text-gray-50  h-4 md:h-6" strokeWidth="1" />
+                                </button>
+                            </div>
+                            <div class="text-center  md:p-5 p-2">
+                                <h1 class="text-sm md:text-xl font-bold tracking-wider">{{ $data->alias }}</h1>
+                                <p class="font-semibold md:text-base text-xs">{{ $data->name }}</p>
+                                <h1 class="text-sm md:text-xl font-bold tracking-wider">{{ $data->prodis_count }}
+                                    PRODI</h1>
+                                <p class="text-gray-600 md:text-base text-xs">
+                                    {{ $data->created_at->diffForHumans() }}</p>
                             </div>
 
                         </div>
                     @endforeach
+                </div>
+                <div class="my-5">
+                    {{ $DataAll->links() }}
                 </div>
             @endif
 

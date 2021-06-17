@@ -34,7 +34,7 @@ Route::prefix('backend')->name('backend.')->middleware(['auth'])->group(function
 
     Route::get('Album',  Album::class)->name('Album');
 
-    Route::get('Galery',  Galery::class)->name('Galery');
+    Route::get('Galery/{album}',  Galery::class)->name('Galery');
 
     Route::get('Institution',  Institution::class)->name('Institution');
 

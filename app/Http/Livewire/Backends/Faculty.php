@@ -106,7 +106,7 @@ class Faculty extends Base
 
     public function render()
     {
-        $DataAll = Models::where('name', 'like', '%' . $this->search . '%')->paginate(10);
+        $DataAll = Models::withCount('prodis')->where('name', 'like', '%' . $this->search . '%')->paginate(10);
         return view('livewire.backends.faculty', compact('DataAll'));
     }
 }
