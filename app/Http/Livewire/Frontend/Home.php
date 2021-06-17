@@ -5,9 +5,9 @@ namespace App\Http\Livewire\Frontend;
 use App\Models\Album;
 use App\Models\Faculty;
 use App\Models\Post;
-use Livewire\Component;
 
-class Home extends Component
+
+class Home extends Base
 {
     public $activeSlide = 1;
     public function render()
@@ -24,6 +24,6 @@ class Home extends Component
             'faculties',
             'albums',
             'sliders'
-        ]))->layout('layouts.frontend');
+        ]))->layout($this->layouts);
     }
 }
