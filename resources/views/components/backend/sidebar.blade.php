@@ -25,17 +25,26 @@
 
     <!-- nav -->
     <nav>
+        <a href="/backend/Album" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
+           Album & Galeri
+        </a>
         <a href="/backend/Post" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
-            Home
+            Artikel
         </a>
-        <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
-            About
+        <a href="/backend/Facility" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
+            Fasilitas
         </a>
-        <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
-            Features
+        <a href="/backend/Faculty" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
+           Fakultas
         </a>
-        <a href="" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
-            Pricing
-        </a>
+        <a href="/backend/Prodi" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
+            Program Studi
+         </a>
+         <a href="/backend/Category" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
+            Kategori
+         </a>
+         <a href="/backend/Dapartement" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white">
+            Departemen
+         </a>
     </nav>
 </div>

@@ -81,8 +81,7 @@
                             <img class="md:h-32 h-16 w-full object-cover border-b-2" src="{{ $data->pathimage }}"
                                 alt="">
                             <div class="flex justify-center items-end px-2 pt-3  space-x-2 border-gray-700">
-                                <button type="button" @click="runModalView('{{ $data->pathimage }}')"
-                                    class="flex items-center px-2 py-1 bg-blue-500 rounded hover:text-gray-100 hover:bg-blue-700 focus:outline-none">
+                                <button type="button" class="flex items-center px-2 py-1 bg-blue-500 rounded hover:text-gray-100 hover:bg-blue-700 focus:outline-none" @click="runModalView('{{ $data->pathimage }}')" >
                                     <x-tabler icon="eye" class="text-gray-50  h-4 md:h-6" strokeWidth="1" />
                                 </button>
                                 <button type="button" wire:click.prevent="destroy('{{ $data->id }}')"

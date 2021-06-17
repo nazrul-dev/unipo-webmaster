@@ -14,8 +14,7 @@ use App\Http\Livewire\Backends\{
     File,
     Page,
     Link,
-    Social,
-    Slider,
+ 
     Widget,
     Employee,
     Event,
@@ -52,9 +51,7 @@ Route::prefix('backend')->name('backend.')->middleware(['auth'])->group(function
 
     Route::get('Link',  Link::class)->name('Link');
 
-    Route::get('Social',  Social::class)->name('Social');
 
-    Route::get('Slider',  Slider::class)->name('Slider');
 
     Route::get('Widget',  Widget::class)->name('Widget');
 

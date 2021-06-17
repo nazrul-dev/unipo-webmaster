@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Livewire\Backends;
 
 use App\Models\Album;
@@ -9,7 +10,7 @@ class Galery extends Base
 {
     public $oldimage = '';
     public $album, $name, $content, $image;
-  
+
     protected function rules()
     {
         return [
@@ -67,7 +68,7 @@ class Galery extends Base
         ]);
 
         $this->Mode        = 'Data';
-        $this->notif('success', 'Berhasil Melakukan Penambahan Galery.');
+        $this->notif('success', 'Berhasil Melakukan Penambahan Galeri.');
         $this->resetFields();
     }
 
@@ -89,7 +90,7 @@ class Galery extends Base
             ]);
 
             $this->Mode         = 'Data';
-            $this->notif('success', 'Berhasil Melakukan Perubahan Galery.');
+            $this->notif('success', 'Berhasil Melakukan Perubahan Galeri.');
             $this->resetFields();
         }
     }
@@ -100,18 +101,16 @@ class Galery extends Base
         $this->triggerDestroy($id, 'App\Models\Galery');
     }
 
-    public function mount(Album $album){
-      $this->album = $album;
-      
+    public function mount(Album $album)
+    {
+        $this->album = $album;
     }
     public function render()
     {
-       
-        $DataAll = Models::
-        where('name', 'like', '%' . $this->search . '%')
-        ->where('album_id', $this->album->id)
-        ->paginate(10);
+
+        $DataAll = Models::where('name', 'like', '%' . $this->search . '%')
+            ->where('album_id', $this->album->id)
+            ->paginate(10);
         return view('livewire.backends.galery', compact('DataAll'));
     }
 }
-

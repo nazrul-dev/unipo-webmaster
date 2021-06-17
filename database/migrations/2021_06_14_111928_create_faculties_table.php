@@ -17,6 +17,7 @@ class CreateFacultiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('alias');
+            $table->string('slug')->unique();
             $table->boolean('active');
             $table->string('logo')->nullable();
             $table->timestamps();
