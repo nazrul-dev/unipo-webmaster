@@ -16,6 +16,7 @@ class CreateAlbumsTable extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->string('thumb');
+            $table->string('slug')->unique();
             $table->string('name');
             $table->string('content');
             $table->timestamps();

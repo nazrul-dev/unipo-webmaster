@@ -15,13 +15,13 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dapartement_id');
-            $table->string('name_position');
-            $table->string('nip');
-            $table->integer('position');
-            $table->string('image')->nullable();
-            $table->year('since');
-            $table->boolean('active');
+            $table->boolean('nama');
+            $table->boolean('title')->nullable();
+            $table->string('jabatan_universitas');
+            $table->string('jabatan_akademik')->nullable();
+            $table->integer('position')->unique();
+            $table->string('foto')->nullable();
+            $table->boolean('rektor')->default(false);
             $table->timestamps();
         });
     }

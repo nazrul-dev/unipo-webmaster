@@ -16,11 +16,11 @@ class CreateGaleriesTable extends Migration
         Schema::create('galeries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('album_id');
-            $table->string('thumb');
+        
             $table->string('image');
             $table->string('name');
             $table->string('content');
-            $table->boolean('publish');
+   
             $table->timestamps();
         });
     }
